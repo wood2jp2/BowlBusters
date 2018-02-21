@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Frames from './Frames'
 
 class Game extends Component {
 
@@ -6,13 +7,31 @@ class Game extends Component {
     super()
     this.state = {
       previousScore: 0,
-      score: 0
+      score: 0,
+      startGame: false
     }
   }
 
+  startGame = e => {
+    e.preventDefault()
+    this.setState({
+      startGame: true
+    })
+  }
+
   render() {
-    return (
-      <p>test anoth</p>
+
+    let startButton = <button
+      className='startButton'
+      onClick={ e => this.startGame(e)}>Start Game</button>
+
+    return(
+      <div>
+      {this.state.startGame ?
+      <Frames /> : startButton}
+      <p>Score: {this.state.score}</p>
+      <p>Previous Game Score: {this.state.previousScore}</p>
+      </div>
     )
   }
 }
