@@ -12,7 +12,7 @@ class Game extends Component {
 
   render() {
     return (
-      <p>test</p>
+      <p>test anoth</p>
     )
   }
 }
