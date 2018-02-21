@@ -12,7 +12,7 @@ class Game extends Component {
 
   render() {
     return (
-      <p>This is {this.state.score} the game</p>
+      <p>test</p>
     )
   }
 }
