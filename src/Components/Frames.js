@@ -6,7 +6,7 @@ class Frames extends Component {
     super()
     this.state = {
       bonusFrame: false,
-      scores: [['12', '21'], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['','']],
+      scores: [['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', '']],
       frames: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       frameCount: 10
     }
@@ -14,14 +14,12 @@ class Frames extends Component {
 
   addScores = (e, i) => {
     e.preventDefault()
-    let currentFrame = this.state.scores[e.target.name]
+    let mockState = [...this.state.scores]
+    let currentFrame = mockState[e.target.name]
     currentFrame[i-1] = e.target.value
-    let replaceFrameInState = this.state.scores.splice(e.target.name, 1, currentFrame)
-    // this.setState({
-    //   scores: e.target.value
-    // })
-
-    console.log(this.state.scores)
+    this.setState({
+      scores: [...mockState]
+    })
   }
 
   render() {
