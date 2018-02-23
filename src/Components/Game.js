@@ -28,7 +28,11 @@ class Game extends Component {
     return(
       <div>
       {this.state.startGame ?
-      <Frames /> : startButton}
+      <Frames setScore={ score => {
+        this.setState({
+          score: score
+        })
+      }}/> : startButton}
       <p>Score: {this.state.score}</p>
       <p>Previous Game Score: {this.state.previousScore}</p>
       </div>

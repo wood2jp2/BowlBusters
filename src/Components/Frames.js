@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 
 class Frames extends Component {
 
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       bonusFrame: false,
       scores: [['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', '']],
       frames: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       frameCount: 11,
-      totalScore: 0
+      totalScore: 0,
+      bonusFrameValues: ['', '']
     }
   }
 
@@ -23,8 +24,31 @@ class Frames extends Component {
     })
   }
 
-  submitScores = (e, scores) => {
+  displayBonusButton = e => {
     e.preventDefault()
+    this.setState({
+      bonusFrame: true
+    })
+  }
+
+  addBonusFrame = (e, i) => {
+    e.preventDefault()
+    let mockBonusFrame = [...this.state.bonusFrameValues]
+    mockBonusFrame[i] = e.target.value
+    this.setState({
+      bonusFrameValues: [...mockBonusFrame]
+    })
+  }
+
+  combineBonusAndScores = e => {
+    e.preventDefault()
+    let mockScoreState = [...this.state.scores]
+    mockScoreState.push(this.state.bonusFrameValues)
+    console.log(mockScoreState)
+    this.submitScores(mockScoreState)
+  }
+
+  submitScores = scores => {
     let totalScore = this.state.totalScore
     let bonusFrame = scores.length === 11 ? scores.pop() : null
     let stringify = scores.map( frame => frame.join('')).join('').split('')
@@ -69,7 +93,8 @@ class Frames extends Component {
       totalScore: totalScore
     })
 
-    console.log(this.state.totalScore)
+    this.props.setScore(this.state.totalScore)
+
   }
 
   render() {
@@ -96,13 +121,32 @@ class Frames extends Component {
 
     let submitScores =
       <button
-      onClick={ e => {
-        this.submitScores(e, this.state.scores)
-      }}>Submit Scores!</button>
+      onClick={ e => this.combineBonusAndScores(e)}>Submit Scores!</button>
+
+    let displayBonusButton = <button
+      name='addBonusFrame'
+      onClick={ e => this.displayBonusButton(e)}>BonusFrame++</button>
+
+    let eleventhFrame = <div id={11}>
+              <p>Bonus Frame</p>
+              <input
+                name='bonusRoll1'
+                maxLength={1}
+                ref={1}
+                onChange={ e => this.addBonusFrame(e, 0)}>
+                </input>
+              <input
+                name='bonusRoll2'
+                maxLength={1}
+                ref={2}
+                onChange={ e => this.addBonusFrame(e, 1)}>
+                </input>
+            </div>
 
     return (
       <div>
         {output}
+        {this.state.bonusFrame ? eleventhFrame : displayBonusButton}
         {submitScores}
       </div>
     )
