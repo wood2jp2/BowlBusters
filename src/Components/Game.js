@@ -6,8 +6,6 @@ class Game extends Component {
   constructor() {
     super()
     this.state = {
-      previousScore: 0,
-      score: 0,
       startGame: false
     }
   }
@@ -19,22 +17,38 @@ class Game extends Component {
     })
   }
 
+  resetGame = e => {
+    e.preventDefault()
+    this.setState({
+      startGame: false
+    })
+  }
+
+  setUsername = e => {
+    this.setState({
+      username: e.target.value
+    })
+  }
+
   render() {
 
     let startButton = <button
       className='startButton'
       onClick={ e => this.startGame(e)}>Start Game</button>
 
+    let resetButton = <button
+      className='resetButton'
+      onClick={ e => {this.resetGame(e)}}>Reset Game</button>
+
+    let userInput = <input
+      className='setUsername'
+      placeholder='Enter Your Name!'
+      onChange={ e => this.setUsername(e)}></input>
+
     return(
       <div>
-      {this.state.startGame ?
-      <Frames setScore={ score => {
-        this.setState({
-          score: score
-        })
-      }}/> : startButton}
-      <p>Score: {this.state.score}</p>
-      <p>Previous Game Score: {this.state.previousScore}</p>
+      {this.state.startGame ? resetButton : userInput}
+      {this.state.startGame ? <Frames username={this.state.username}/> : startButton}
       </div>
     )
   }

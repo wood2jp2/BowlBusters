@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
+import TrackScores from './TrackScores'
 
 class Frames extends Component {
 
   constructor (props) {
     super(props)
     this.state = {
+      username: props.username,
       bonusFrame: false,
       scores: [['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', '']],
       frames: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      bonusFrameValues: ['', ''],
       frameCount: 11,
-      totalScore: 0,
-      bonusFrameValues: ['', '']
+      totalScore: 0
     }
   }
 
@@ -40,14 +42,15 @@ class Frames extends Component {
     })
   }
 
+  // 1. pushes any bonus frame into the main score array
   combineBonusAndScores = e => {
     e.preventDefault()
     let mockScoreState = [...this.state.scores]
     mockScoreState.push(this.state.bonusFrameValues)
-    console.log(mockScoreState)
     this.submitScores(mockScoreState)
   }
 
+  // 2. scores all the frames
   submitScores = scores => {
     let totalScore = this.state.totalScore
     let bonusFrame = scores.length === 11 ? scores.pop() : null
@@ -92,9 +95,6 @@ class Frames extends Component {
     this.setState({
       totalScore: totalScore
     })
-
-    this.props.setScore(this.state.totalScore)
-
   }
 
   render() {
@@ -145,9 +145,11 @@ class Frames extends Component {
 
     return (
       <div>
+        <h4>Welcome, {this.state.username}</h4>
         {output}
         {this.state.bonusFrame ? eleventhFrame : displayBonusButton}
         {submitScores}
+        {this.state.totalScore > 0 ? <TrackScores score={this.state.totalScore} previousScore={this.state.previousScore[this.state.previousScore.length-1]}/> : null}
       </div>
     )
 
