@@ -1,5 +1,25 @@
 import React, { Component } from 'react'
 import Frames from './Frames'
+import styled from 'styled-components'
+
+const StartAndReset = styled.button`
+  padding: 10px 10px 10px 10px;
+  border-radius: 8px;
+  margin: 8px 8px 8px 8px;
+  font-size: 20px;
+  background-color: #0BD0B2;
+
+  :hover {
+    background-color: #0C993F;
+  }
+
+`
+
+const Username = styled.input`
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 8px
+`
 
 class Game extends Component {
 
@@ -32,18 +52,18 @@ class Game extends Component {
 
   render() {
 
-    let startButton = <button
+    let startButton = <StartAndReset
       className='startButton'
-      onClick={ e => this.startGame(e)}>Start Game</button>
+      onClick={ e => this.startGame(e)}>Start Game</StartAndReset>
 
-    let resetButton = <button
+    let resetButton = <StartAndReset
       className='resetButton'
-      onClick={ e => {this.resetGame(e)}}>Reset Game</button>
+      onClick={ e => {this.resetGame(e)}}>Reset Game</StartAndReset>
 
-    let userInput = <input
+    let userInput = <Username
       className='setUsername'
       placeholder='Enter Your Name!'
-      onChange={ e => this.setUsername(e)}></input>
+      onChange={ e => this.setUsername(e)}></Username>
 
     return(
       <div>
@@ -55,3 +75,4 @@ class Game extends Component {
 }
 
 export default Game
+export {StartAndReset}

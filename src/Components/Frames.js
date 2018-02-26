@@ -1,12 +1,25 @@
 import React, { Component } from 'react'
 import TrackScores from './TrackScores'
+import styled from 'styled-components'
+import StartAndReset from './Game'
+
+const Frame = styled.div`
+  > p {
+    font-weight: bold
+  }
+  > input {
+    width: 12px;
+    margin-right: 4px;
+    margin-left: 4px;
+  }
+`
 
 class Frames extends Component {
 
   constructor (props) {
     super(props)
     this.state = {
-      username: props.username,
+      username: props.username || 'Bowler',
       bonusFrame: false,
       scores: [['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', '']],
       frames: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -24,7 +37,6 @@ class Frames extends Component {
     this.setState({
       scores: [...mockState]
     })
-    console.log('asdf')
   }
 
   displayBonusButton = e => {
@@ -102,7 +114,7 @@ class Frames extends Component {
 
     let output = this.state.frames.map( (x, i) => {
       return (
-        <div id={i} key={i}>
+        <Frame id={i} key={i}>
           <p>Frame {i+1}</p>
           <input
             name={i}
@@ -116,7 +128,7 @@ class Frames extends Component {
             ref={2}
             onChange={ e => this.addScores(e, 2)}>
             </input>
-        </div>
+        </Frame>
       )
     })
 
@@ -128,7 +140,7 @@ class Frames extends Component {
       name='addBonusFrame'
       onClick={ e => this.displayBonusButton(e)}>BonusFrame++</button>
 
-    let eleventhFrame = <div id={11}>
+    let eleventhFrame = <Frame id={11}>
               <p>Bonus Frame</p>
               <input
                 name='bonusRoll1'
@@ -142,7 +154,7 @@ class Frames extends Component {
                 ref={2}
                 onChange={ e => this.addBonusFrame(e, 1)}>
                 </input>
-            </div>
+            </Frame>
 
     return (
       <div>
@@ -156,5 +168,7 @@ class Frames extends Component {
 
   }
 }
+
+
 
 export default Frames
