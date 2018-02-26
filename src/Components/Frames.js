@@ -24,6 +24,7 @@ class Frames extends Component {
     this.setState({
       scores: [...mockState]
     })
+    console.log('asdf')
   }
 
   displayBonusButton = e => {
