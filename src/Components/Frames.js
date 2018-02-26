@@ -6,7 +6,7 @@ class Frames extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      username: props.username,
+      username: props.username || 'Bowler',
       bonusFrame: false,
       scores: [['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', ''], ['', '']],
       frames: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
