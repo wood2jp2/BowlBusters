@@ -149,7 +149,7 @@ class Frames extends Component {
         {output}
         {this.state.bonusFrame ? eleventhFrame : displayBonusButton}
         {submitScores}
-        {this.state.totalScore > 0 ? <TrackScores score={this.state.totalScore} previousScore={this.state.previousScore[this.state.previousScore.length-1]}/> : null}
+        {this.state.totalScore > 0 ? <TrackScores score={this.state.totalScore} /> : null}
       </div>
     )
 
