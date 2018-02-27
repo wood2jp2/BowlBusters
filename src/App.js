@@ -6,21 +6,19 @@ import Footer from './Components/Footer'
 import styled from 'styled-components'
 
 const Wrap = styled.div`
-  background-color: #E87DE4;
+  background-color: #4A96AD;
   text-align: center;
 `
 
 class App extends Component {
   render() {
     return (
-      <Wrap className="App">
-        <header className="App-header">
-          <Header />
+      <Wrap>
+        <Header />
+        <Game>
 
-
-        </header>
-        <Game />
-        <Footer />
+        </Game>
+        <Footer></Footer>
       </Wrap>
     )
   }

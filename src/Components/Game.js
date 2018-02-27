@@ -7,12 +7,13 @@ const StartAndReset = styled.button`
   border-radius: 8px;
   margin: 8px 8px 8px 8px;
   font-size: 20px;
-  background-color: #0BD0B2;
+  background-color: #7D1935;
+  color: white;
 
   :hover {
-    background-color: #0C993F;
+    background-color: #E16781;
+    padding: 15px 15px 15px 15px;
   }
-
 `
 
 const Username = styled.input`
@@ -58,7 +59,7 @@ class Game extends Component {
 
     let resetButton = <StartAndReset
       className='resetButton'
-      onClick={ e => {this.resetGame(e)}}>Reset Game</StartAndReset>
+      onClick={ e => this.resetGame(e)}>Reset Game</StartAndReset>
 
     let userInput = <Username
       className='setUsername'
@@ -75,4 +76,3 @@ class Game extends Component {
 }
 
 export default Game
-export {StartAndReset}

@@ -1,18 +1,26 @@
-import glamorous from 'glamorous'
-import React from 'react'
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
-const { Div } = glamorous
+const Foot = styled.div`
+  bottom: 0;
+  font-size: 12px;
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  position: absolute;
+  width: 100%;
+`
 
-let Footer = () => {
-  return (
-    <Div
-      fontSize={8}
-      textAlign='center'
-      padding='20px 20px 20px 20px'
-      marginTop='60%'>
-        Created by Joshua Wood, Copyright 2018
-      </Div>
-  )
+class Footer extends Component {
+  render() {
+    return (
+      <Foot>
+
+          Created by Joshua Wood, Copyright 2018
+
+
+      </Foot>
+    )
+  }
 }
 
 export default Footer
