@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const Head = styled.div`
-  color: blue;
+  color: white;
   font-size: 40px;
-  background-color: #F2ED87;
+  background-color: #7D1935;
 
   > h4 {
     font-size: 25px

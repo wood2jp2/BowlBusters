@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import TrackScores from './TrackScores'
 import styled from 'styled-components'
+import styles from './Styles'
 
 const Frame = styled.div`
+
   display: inline-block;
   border: 2px solid black;
   margin: 1%;
@@ -20,18 +22,16 @@ const Frame = styled.div`
   }
 `
 
-const BonusAndSubmit = styled.button`
-  padding: 10px 10px 10px 10px;
-  border-radius: 8px;
-  margin: 8px 8px 8px 8px;
-  font-size: 20px;
-  background-color: #7D1935;
-  color: white;
+const Wrap = styled.div`
 
-  :hover {
-    background-color: #E16781;
-    padding: 15px 15px 15px 15px;
+  > h4 {
+    color: white;
+    font-size: 32px
   }
+`
+
+const BonusAndSubmit = styled.button`
+  ${styles.Button}
 `
 
 class Frames extends Component {
@@ -177,13 +177,13 @@ class Frames extends Component {
             </Frame>
 
     return (
-      <div>
+      <Wrap>
         <h4>Welcome, {this.state.username}</h4>
         {output}
         {this.state.bonusFrame ? eleventhFrame : displayBonusButton}
         {submitScores}
         {this.state.totalScore > 0 ? <TrackScores score={this.state.totalScore} /> : null}
-      </div>
+      </Wrap>
     )
 
   }
