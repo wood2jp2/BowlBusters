@@ -1,16 +1,36 @@
 import React, { Component } from 'react'
 import TrackScores from './TrackScores'
 import styled from 'styled-components'
-import StartAndReset from './Game'
 
 const Frame = styled.div`
+  display: inline-block;
+  border: 2px solid black;
+  margin: 1%;
+  padding: 0% 1% 1% 1%;
+  background-color: white;
+
   > p {
-    font-weight: bold
+    font-weight: bold;
   }
+
   > input {
     width: 12px;
     margin-right: 4px;
     margin-left: 4px;
+  }
+`
+
+const BonusAndSubmit = styled.button`
+  padding: 10px 10px 10px 10px;
+  border-radius: 8px;
+  margin: 8px 8px 8px 8px;
+  font-size: 20px;
+  background-color: #7D1935;
+  color: white;
+
+  :hover {
+    background-color: #E16781;
+    padding: 15px 15px 15px 15px;
   }
 `
 
@@ -133,12 +153,12 @@ class Frames extends Component {
     })
 
     let submitScores =
-      <button
-      onClick={ e => this.combineBonusAndScores(e)}>Submit Scores!</button>
+      <BonusAndSubmit
+      onClick={ e => this.combineBonusAndScores(e)}>Submit Scores!</BonusAndSubmit>
 
-    let displayBonusButton = <button
+    let displayBonusButton = <BonusAndSubmit
       name='addBonusFrame'
-      onClick={ e => this.displayBonusButton(e)}>BonusFrame++</button>
+      onClick={ e => this.displayBonusButton(e)}>BonusFrame++</BonusAndSubmit>
 
     let eleventhFrame = <Frame id={11}>
               <p>Bonus Frame</p>
