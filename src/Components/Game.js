@@ -1,19 +1,10 @@
 import React, { Component } from 'react'
 import Frames from './Frames'
 import styled from 'styled-components'
+import styles from './Styles'
 
 const StartAndReset = styled.button`
-  padding: 10px 10px 10px 10px;
-  border-radius: 8px;
-  margin: 8px 8px 8px 8px;
-  font-size: 20px;
-  background-color: #7D1935;
-  color: white;
-
-  :hover {
-    background-color: #E16781;
-    padding: 15px 15px 15px 15px;
-  }
+  ${styles.Button}
 `
 
 const Username = styled.input`

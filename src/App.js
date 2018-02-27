@@ -1,25 +1,27 @@
 import React, { Component } from 'react'
-import './App.css'
 import Header from './Components/Header'
 import Game from './Components/Game'
 import Footer from './Components/Footer'
-import styled from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
 
-const Wrap = styled.div`
-  background-color: #4A96AD;
-  text-align: center;
+injectGlobal`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Lobster, cursive;
+    background-color: #4A96AD;
+    text-align: center;
+  }
 `
 
 class App extends Component {
   render() {
     return (
-      <Wrap>
+      <div>
         <Header />
-        <Game>
-
-        </Game>
-        <Footer></Footer>
-      </Wrap>
+        <Game />
+        <Footer />
+      </div>
     )
   }
 }
